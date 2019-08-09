@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState(null);
- 
+  const [movie, setMovie] = useState();
+  console.log('movies', props.match.params.id);
+
+  const id = props.match.params.id;
+
   useEffect(() => {
-    const id = 1;
+    
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,24 +21,21 @@ const Movie = (props) => {
           console.error(error);
         });
          
-  },[]);
+  },[id]);
   
-  // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
-// TEST this for th eproblem with null 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setCount('Timeout called!');
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  //Uncomment this only when you have moved on to the stretch goals
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+  }
 
-  if (!movie) {
+  
+      if (!movie) {
     return <div>Loading movie information...</div>;
   }
+      
+    
+  
 
   const { title, director, metascore, stars } = movie;
 
@@ -59,7 +59,7 @@ const Movie = (props) => {
           
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div onClick={()=>{props.addToSavedList(movie)}} className="save-button">Save</div>
     </div>
   );
 }

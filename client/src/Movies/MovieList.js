@@ -29,13 +29,10 @@ const MovieList = props => {
 }
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
+  const { title, director, metascore, stars, id  } = movie;
   return (
-    // const = linkstile{
-    //   textDecoration: `none`,
-    //   color: `black`
-    // }
-     <Link to={`/movies/${movie.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+    
+     <Link to={`/movies/${id}`} style={{ textDecoration: 'none', color: 'black' }}>
     <div className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
