@@ -25,6 +25,13 @@ const Movie = (props) => {
   //   const addToSavedList = props.addToSavedList;
   //   addToSavedList(movie)
   // }
+// TEST this for th eproblem with null 
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setCount('Timeout called!');
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   if (!movie) {
     return <div>Loading movie information...</div>;
