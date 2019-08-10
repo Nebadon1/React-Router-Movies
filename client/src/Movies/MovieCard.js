@@ -23,8 +23,10 @@ const MovieCard = props => {
           </div>
           
         ))}
-      </div>
-      <div onClick={()=>{props.addToSavedList(movie)}} className="save-button">Save</div>
+        </div>
+        
+      {props.addToSavedList && 
+      <div onClick={()=>{props.addToSavedList(movie)}} className="save-button">Save</div>}
     </div>
   );
 };
