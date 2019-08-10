@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import MovieCard from './MovieCard'
 const Movie = (props) => {
   const [movie, setMovie] = useState();
   console.log('movies', props.match.params.id);
@@ -35,33 +35,11 @@ const Movie = (props) => {
   }
       
     
-  
 
-  const { title, director, metascore, stars } = movie;
-
+  return(
+    <MovieCard movie={movie} {...props}/>
+  )
   
-  return (
-    <div className="save-wrapper">
-      <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
-        <h3>Actors</h3>
-           
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-          
-        ))}
-      </div>
-      <div onClick={()=>{props.addToSavedList(movie)}} className="save-button">Save</div>
-    </div>
-  );
 }
 
 export default Movie;
